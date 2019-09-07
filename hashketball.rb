@@ -107,9 +107,12 @@ def game_hash
   }
 end
 
-def num_points_scored(player_name)
+def player_list
   combined_players = game_hash[:home][:players] + game_hash[:away][:players]
-  player = combined_players.select { |x| x[player_name] }
+end
+
+def num_points_scored(player_name)
+  player_list.select { |x| x[player_name] }
   player[0][player_name][:points]
 end
 
