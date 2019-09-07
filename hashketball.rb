@@ -108,7 +108,7 @@ def game_hash
 end
 
 def player_list
-  combined_players = game_hash[:home][:players] + game_hash[:away][:players]
+  game_hash[:home][:players] + game_has[:away][:players]
 end
 
 def num_points_scored(player_name)
