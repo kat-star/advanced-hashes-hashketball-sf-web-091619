@@ -112,18 +112,16 @@ def player_list
 end
 
 def num_points_scored(player_name)
-  player_list.select { |x| x[player_name] }
-  player[0][player_name][:points]
+  players = player_list.select { |x| x[player_name] }
+  players[0][player_name][:points]
 end
 
 def shoe_size(player_name)
-  combined_players = game_hash[:home][:players] + game_hash[:away][:players]
-  player = combined_players.select { |x| x[player_name] }
-  player[0][player_name][:shoe]
+  players = player_list.select { |x| x[player_name] }
+  players[0][player_name][:shoe]
 end
 
 def team_colors(team_name)
-  
   game_hash.each do |location, team_data|
     return team_data[:colors] if team_data[:team_name] == team_name
   end
@@ -156,8 +154,6 @@ def player_numbers(team_name)
 end
 
 def player_stats(player_name)
-  player_list = game_hash[:home][:players] + game_hash[:away][:players]
-  
   player_list.each do |player_h| 
     player_h.each do |key, value|
       return value if key == player_name
